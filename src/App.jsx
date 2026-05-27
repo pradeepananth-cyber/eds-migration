@@ -574,7 +574,7 @@ const SlideShiftAndArchitecture = () => (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10, flex: 1 }}>
           {[
             { icon: Globe, t: 'Edge-first delivery — replaces AEM Publish / Dispatcher.' },
-            { icon: FileText, t: 'Author in Word, Google Docs, SharePoint, or Universal Editor.' },
+            { icon: FileText, t: 'Managed Content in AEM Sites and Author in Universal Editor. (Document Authoring as an emerging lightweight option) ' },
             { icon: GitBranch, t: 'Code in GitHub. Plain HTML, modern CSS, vanilla JS — no build chain.' },
           ].map((row, i) => (
             <div
