@@ -1339,7 +1339,7 @@ const SlideProgramInFlight = () => {
                   letterSpacing: '0.1em',
                 }}
               >
-                ~100 TO BE Migrated over ~2 YEARS · ON CLASSIC AEM
+                ~100 TO BE Migrated over ~2 YEARS
               </div>
             </div>
           </div>
