@@ -320,30 +320,131 @@ const SlideCover = () => (
     </div>
 
     {/* middle */}
-    <div style={{ zIndex: 1, maxWidth: '85%', display: 'flex', flexDirection: 'column', gap: 28 }}>
-  {/* IBM identity block */}
-  <div
+   <div
   style={{
-    display: 'flex',
+    zIndex: 1,
+    display: 'grid',
+    gridTemplateColumns: '1.3fr 1fr',
+    gap: 48,
     alignItems: 'center',
-    gap: 22,
-    paddingBottom: 22,
-    borderBottom: `1px solid ${C.line}`,
   }}
->    
-  <IBMMark size={84} withFrame={false} />
-    <div>...IBM Point of View...</div>
+>
+  {/* LEFT COLUMN — IBM identity, title, description */}
+  <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+    {/* IBM identity block */}
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: 22,
+        paddingBottom: 22,
+        borderBottom: `1px solid ${C.line}`,
+      }}
+    >
+      <IBMMark size={84} withFrame={false} />
+      <div>
+        <div
+          style={{
+            fontFamily: FONT_MONO,
+            fontSize: 13,
+            color: C.amber,
+            letterSpacing: '0.24em',
+            textTransform: 'uppercase',
+            fontWeight: 500,
+          }}
+        >
+          IBM Point of View
+        </div>
+        <div
+          style={{
+            fontFamily: FONT_SERIF,
+            fontStyle: 'italic',
+            fontSize: 22,
+            color: C.inkMid,
+            marginTop: 6,
+            lineHeight: 1.3,
+          }}
+        >
+          An IBM perspective on Adobe's architectural shift
+        </div>
+      </div>
+    </div>
+
+    {/* Topic eyebrow */}
+    <div>
+      <span
+        style={{
+          fontFamily: FONT_MONO,
+          fontSize: 12,
+          color: C.amber,
+          letterSpacing: '0.2em',
+          textTransform: 'uppercase',
+        }}
+      >
+        Adobe Experience Manager{' '}
+        <span style={{ color: C.inkMuted, margin: '0 8px' }}>→</span> Edge Delivery Services
+      </span>
+    </div>
+
+    {/* Title */}
+    <h1
+      style={{
+        fontFamily: FONT_SERIF,
+        fontWeight: 400,
+        fontSize: 68,
+        lineHeight: 0.98,
+        letterSpacing: '-0.025em',
+        color: C.ink,
+        margin: 0,
+      }}
+    >
+      A platform decision,
+      <br />
+      <span style={{ fontStyle: 'italic', color: C.amber }}>not a platform upgrade.</span>
+    </h1>
+
+    {/* Description */}
+    <div>
+      <Body size={15} color={C.inkMid} lh={1.55}>
+        An IBM-prepared briefing on Adobe's architectural shift, what it means for current AEM
+        investments, and the strategic choices that need to happen this fiscal year — with
+        particular attention to the enterprise content management capabilities that regulated
+        industries cannot afford to lose.
+      </Body>
+    </div>
   </div>
 
-  {/* Topic eyebrow */}
-  <div>...Adobe Experience Manager → Edge Delivery Services...</div>
-
-  {/* Title */}
-  <h1>A platform decision, not a platform upgrade.</h1>
-
-  {/* Description */}
-  <div style={{ maxWidth: 620 }}>
-    <Body>An IBM-prepared briefing on Adobe's architectural shift...</Body>
+  {/* RIGHT COLUMN — image + caption link */}
+  <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+    <img
+      src="/is-edge-right-for-you.jpeg"
+      alt="Adobe documentation: Is Edge Right for You? — Adobe recommends Edge Delivery Services as the starting point for any new project"
+      style={{
+        width: '100%',
+        height: 'auto',
+        display: 'block',
+        border: `1px solid ${C.line}`,
+        boxShadow: '0 20px 50px rgba(0,0,0,0.45)',
+      }}
+    />
+    
+    <a  href="https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/sites/sites-and-edge"
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{
+        fontFamily: FONT_MONO,
+        fontSize: 11,
+        color: C.amber,
+        letterSpacing: '0.12em',
+        textDecoration: 'underline',
+        textUnderlineOffset: '4px',
+        textDecorationColor: 'rgba(232, 163, 61, 0.4)',
+        lineHeight: 1.5,
+        display: 'inline-block',
+      }}
+    >
+      Full guidance provided by Adobe as of May 18, 2026 →
+    </a>
   </div>
 </div>
 
