@@ -1260,7 +1260,7 @@ const SlideProgramInFlight = () => {
   ];
 
   return (
-    <SlideShell num="05" label="The program in flight" kicker="IBM Point of View">
+    <SlideShell num="07" label="WebU Migration" kicker="IBM Point of View">
       <div
         style={{
           display: 'grid',
@@ -1273,18 +1273,18 @@ const SlideProgramInFlight = () => {
         {/* LEFT COLUMN — situation, status, considerations grid */}
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: 0 }}>
           <SlideTitle size={36}>
-            What about the{' '}
+            Addressing the
             <span style={{ fontStyle: 'italic', color: C.amber }}>
-              100 sites still on the docket?
+              ~100 sites still on the docket?
             </span>
           </SlideTitle>
 
           <div style={{ marginTop: 10 }}>
             <Body size={12.5} lh={1.5}>
-              140 sites are localized variants of one master. 40 are migrated to the new design;
-              100 remain on a quarter-by-quarter cadence over two years, all targeting classic AEM.
-              With EDS now the strategic future, every locale migrated to classic over the next two
-              years is a locale that will need to be migrated again.
+              ~40 sites are migrated to the new design;
+              Another ~100 to be migrated on a quarterlycadence over two years, all targeting classic AEM.
+              With EDS now the strategic future, <span style={{ fontStyle: 'italic', color: C.amber }}> every locale migrated to classic over the next two
+              years is a locale that will need to be migrated again.</span>
             </Body>
           </div>
 
