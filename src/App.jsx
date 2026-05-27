@@ -1216,17 +1216,17 @@ const SlideQuestions = () => (
 ────────────────────────────────────────────────────────────────── */
 
 const SlideProgramInFlight = () => (
-  <SlideShell num="07" label="The program in flight" kicker="IBM Point of View">
+  <SlideShell num="07" label="In-flight WebU Migration" kicker="IBM Point of View">
     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.15fr', gap: 40, flex: 1, minHeight: 0 }}>
       {/* LEFT — situation + status bar */}
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <SlideTitle size={42}>
-          What about the <span style={{ fontStyle: 'italic', color: C.amber }}>100 sites still on the docket?</span>
+          Addressing <span style={{ fontStyle: 'italic', color: C.amber }}>~100 sites still on the docket.</span>
         </SlideTitle>
 
         <div style={{ marginTop: 14, maxWidth: 460 }}>
           <Body size={13.5} lh={1.55}>
-            A redesign program is already in motion — 40 of 140 sites migrated to the new design,
+            WebU Migration is already in motion — ~40 of 140 sites migrated to the new design,
             100 remaining on a quarter-by-quarter cadence over the next two years, all targeting
             classic AEM Sites. With EDS now the strategic future, the existing plan needs a
             second look.
@@ -1284,7 +1284,7 @@ const SlideProgramInFlight = () => (
                 letterSpacing: '0.1em',
               }}
             >
-              100 REMAINING · ~2 YEARS · ON CLASSIC AEM
+              ~100 REMAINING · ~2 YEARS · ON CLASSIC AEM
             </div>
           </div>
         </div>
@@ -1337,7 +1337,7 @@ const SlideProgramInFlight = () => (
             marginBottom: 2,
           }}
         >
-          Three options for the remaining 100
+          Three options for the remaining sites
         </div>
 
         {[
@@ -1359,10 +1359,10 @@ const SlideProgramInFlight = () => (
           },
           {
             label: 'OPTION C',
-            t: 'Bifurcate the backlog',
-            sub: 'Triage now — EDS for the right sites, classic for the rest',
-            b: 'New / marketing / high-velocity sites go to EDS. Stable, low-change sites finish on classic AEM. Uses the modernization agent for the EDS subset. Balances disruption against future-proofing.',
-            verdict: 'IBM\u2019s recommended starting position.',
+            t: 'Pilot, then prioritize by value',
+            sub: 'A three-phase path that honors the risk posture and captures the value',
+            b: 'Phase 0 — pilot on one mid-tier locale (one quarter) to prove the EDS pattern under real conditions, not on the crown jewel. Phase 1 — migrate the top 20% of locales by traffic, where the performance and AI gains compound against real volume. Phase 2 — run the long tail on the now-proven pattern, increasingly automated by the Modernization Agent.',
+            verdict: 'Risk reduction where it counts. Value where it concentrates.',
             accent: C.amber,
             recommended: true,
           },
