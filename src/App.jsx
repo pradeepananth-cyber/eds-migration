@@ -1361,7 +1361,19 @@ const SlideProgramInFlight = () => (
             label: 'OPTION C',
             t: 'Pilot, then prioritize by value',
             sub: 'A three-phase path that honors the risk posture and captures the value',
-            b: 'Phase 0 — pilot on one mid-tier locale (one quarter) to prove the EDS pattern under real conditions, not on the crown jewel. Phase 1 — migrate the top 20% of locales by traffic, where the performance and AI gains compound against real volume. Phase 2 — run the long tail on the now-proven pattern, increasingly automated by the Modernization Agent.',
+            b: (
+  <>
+    <div style={{ marginBottom: 8 }}>
+      <strong style={{ color: C.ink, fontWeight: 500 }}>Phase 0</strong> — pilot on one mid-tier locale (one quarter) to prove the EDS pattern under real conditions, not on the crown jewel.
+    </div>
+    <div style={{ marginBottom: 8 }}>
+      <strong style={{ color: C.ink, fontWeight: 500 }}>Phase 1</strong> — migrate the top 20% of locales by traffic, where the performance and AI gains compound against real volume.
+    </div>
+    <div>
+      <strong style={{ color: C.ink, fontWeight: 500 }}>Phase 2</strong> — run the long tail on the now-proven pattern, increasingly automated by the Modernization Agent.
+    </div>
+  </>
+),
             verdict: 'Risk reduction where it counts. Value where it concentrates.',
             accent: C.amber,
             recommended: true,
@@ -1474,7 +1486,7 @@ const SlideProgramInFlight = () => (
         { t: 'Site lifecycle', b: 'How long does each site need to live? A site sunsetting in 18 months is not worth a double migration.' },
         { t: 'Change velocity', b: 'High-change marketing sites benefit most from EDS\u2019s document authoring; static brochureware benefits least.' },
         { t: 'Team readiness', b: 'EDS is plain HTML/CSS/JS in GitHub. Re-skilling the AEM team is a real but bounded program.' },
-        { t: 'Vendor & contract', b: 'Existing redesign vendor contracts may need re-scoping. Modernization Agent can absorb part of the work.' },
+        { t: 'Migration Rescoping', b: 'Existing migration vendor contracts may need re-scoping. Modernization Agent can absorb part of the work.' },
       ].map((c) => (
         <div
           key={c.t}
