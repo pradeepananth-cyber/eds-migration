@@ -1215,26 +1215,187 @@ const SlideQuestions = () => (
    SLIDE 07 — WebU Migration Considerations
 ────────────────────────────────────────────────────────────────── */
 
-const SlideProgramInFlight = () => (
-  <SlideShell num="07" label="In-flight WebU Migration" kicker="IBM Point of View">
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.15fr', gap: 40, flex: 1, minHeight: 0 }}>
-      {/* LEFT — situation + status bar */}
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
-        <SlideTitle size={42}>
-          Addressing <span style={{ fontStyle: 'italic', color: C.amber }}>~100 sites still on the docket.</span>
-        </SlideTitle>
+const SlideProgramInFlight = () => {
+  const considerations = [
+    { t: 'Site lifecycle', b: 'How long does each locale need to live? A locale sunsetting in 18 months is not worth a double migration.' },
+    { t: 'Traffic concentration', b: 'A handful of locales typically drive most engagement. Sequencing by traffic captures value where it compounds.' },
+    { t: 'Team readiness', b: 'EDS is plain HTML/CSS/JS in GitHub. Re-skilling the AEM team is a real but bounded program.' },
+    { t: 'Migration Partner Contract', b: 'Existing redesign vendor contracts may need re-scoping. The Modernization Agent can absorb part of the work.' },
+  ];
 
-        <div style={{ marginTop: 14, maxWidth: 460 }}>
-          <Body size={13.5} lh={1.55}>
-            WebU Migration is already in motion — ~40 of 140 sites migrated to the new design,
-            100 remaining on a quarter-by-quarter cadence over the next two years, all targeting
-            classic AEM Sites. With EDS now the strategic future, the existing plan needs a
-            second look.
-          </Body>
+  const options = [
+    {
+      label: 'OPTION A',
+      t: 'Stay the course',
+      sub: 'Finish on classic AEM, migrate to EDS later',
+      b: 'Lowest near-term disruption. Highest cumulative cost — every locale gets migrated twice. Locks in two more years of divergence from Adobe\u2019s AI roadmap.',
+      verdict: 'Cleanest schedule. Most expensive over time.',
+      accent: C.inkMuted,
+    },
+    {
+      label: 'OPTION B',
+      t: 'Pivot immediately',
+      sub: 'Re-target the remaining 100 locales to EDS',
+      b: 'Single migration per locale, full alignment to Adobe\u2019s roadmap. Requires re-skilling, new tooling, and a 1–2 quarter program pause to retool. Highest short-term cost, lowest long-term cost.',
+      verdict: 'Most expensive this year. Cheapest over five.',
+      accent: C.amber,
+    },
+    {
+      label: 'OPTION C',
+      t: 'Pilot, then prioritize by value',
+      sub: 'A three-phase path that honors the risk posture and captures the value',
+      b: (
+        <>
+          <strong style={{ color: C.ink, fontWeight: 500 }}>Phase 0</strong> — pilot on one mid-tier locale (one quarter) to prove the EDS pattern under real conditions, not on the crown jewel.
+          <br /><br />
+          <strong style={{ color: C.ink, fontWeight: 500 }}>Phase 1</strong> — migrate the top 20% of locales by traffic, where the performance and AI gains compound against real volume.
+          <br /><br />
+          <strong style={{ color: C.ink, fontWeight: 500 }}>Phase 2</strong> — run the long tail on the now-proven pattern, increasingly automated by the Modernization Agent.
+        </>
+      ),
+      verdict: 'Risk reduction where it counts. Value where it concentrates.',
+      accent: C.amber,
+      recommended: true,
+    },
+  ];
+
+  return (
+    <SlideShell num="05" label="The program in flight" kicker="IBM Point of View">
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1.15fr',
+          gap: 32,
+          flex: 1,
+          minHeight: 0,
+        }}
+      >
+        {/* LEFT COLUMN — situation, status, considerations grid */}
+        <div style={{ display: 'flex', flexDirection: 'column', minHeight: 0 }}>
+          <SlideTitle size={36}>
+            What about the{' '}
+            <span style={{ fontStyle: 'italic', color: C.amber }}>
+              100 sites still on the docket?
+            </span>
+          </SlideTitle>
+
+          <div style={{ marginTop: 10 }}>
+            <Body size={12.5} lh={1.5}>
+              140 sites are localized variants of one master. 40 are migrated to the new design;
+              100 remain on a quarter-by-quarter cadence over two years, all targeting classic AEM.
+              With EDS now the strategic future, every locale migrated to classic over the next two
+              years is a locale that will need to be migrated again.
+            </Body>
+          </div>
+
+          {/* Program status bar */}
+          <div style={{ marginTop: 16 }}>
+            <div
+              style={{
+                fontFamily: FONT_MONO,
+                fontSize: 10,
+                color: C.inkMuted,
+                letterSpacing: '0.2em',
+                textTransform: 'uppercase',
+                marginBottom: 6,
+              }}
+            >
+              Program status
+            </div>
+            <div
+              style={{
+                display: 'flex',
+                height: 30,
+                border: `1px solid ${C.line}`,
+                overflow: 'hidden',
+              }}
+            >
+              <div
+                style={{
+                  width: '28.6%',
+                  background: C.amber,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontFamily: FONT_MONO,
+                  fontSize: 10,
+                  color: C.bg,
+                  fontWeight: 600,
+                  letterSpacing: '0.1em',
+                }}
+              >
+                40 DONE
+              </div>
+              <div
+                style={{
+                  width: '71.4%',
+                  background: C.bgElev,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontFamily: FONT_MONO,
+                  fontSize: 10,
+                  color: C.inkMid,
+                  letterSpacing: '0.1em',
+                }}
+              >
+                100 REMAINING · ~2 YEARS · ON CLASSIC AEM
+              </div>
+            </div>
+          </div>
+
+          {/* Considerations — 2x2 grid pushed to bottom */}
+          <div style={{ marginTop: 'auto', paddingTop: 18 }}>
+            <div
+              style={{
+                fontFamily: FONT_MONO,
+                fontSize: 10,
+                color: C.inkMuted,
+                letterSpacing: '0.2em',
+                textTransform: 'uppercase',
+                marginBottom: 8,
+              }}
+            >
+              Considerations that drive the call
+            </div>
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(2, 1fr)',
+                gap: 8,
+              }}
+            >
+              {considerations.map((c) => (
+                <div
+                  key={c.t}
+                  style={{
+                    border: `1px solid ${C.line}`,
+                    background: C.bgCard,
+                    padding: '10px 12px',
+                  }}
+                >
+                  <div
+                    style={{
+                      fontFamily: FONT_SERIF,
+                      fontSize: 14,
+                      color: C.amber,
+                      marginBottom: 3,
+                      lineHeight: 1.2,
+                    }}
+                  >
+                    {c.t}
+                  </div>
+                  <Body size={11} lh={1.4}>
+                    {c.b}
+                  </Body>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
-        {/* Program status bar */}
-        <div style={{ marginTop: 22 }}>
+        {/* RIGHT COLUMN — three options, full vertical height */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 10, minHeight: 0 }}>
           <div
             style={{
               fontFamily: FONT_MONO,
@@ -1242,279 +1403,95 @@ const SlideProgramInFlight = () => (
               color: C.inkMuted,
               letterSpacing: '0.2em',
               textTransform: 'uppercase',
-              marginBottom: 8,
             }}
           >
-            Program status
+            Three options for the remaining 100
           </div>
-          <div
-            style={{
-              display: 'flex',
-              height: 36,
-              border: `1px solid ${C.line}`,
-              overflow: 'hidden',
-            }}
-          >
+
+          {options.map((opt) => (
             <div
+              key={opt.label}
               style={{
-                width: '28.6%',
-                background: C.amber,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontFamily: FONT_MONO,
-                fontSize: 11,
-                color: C.bg,
-                fontWeight: 600,
-                letterSpacing: '0.1em',
+                border: `1px solid ${opt.recommended ? C.amber : C.line}`,
+                background: opt.recommended ? 'rgba(232,163,61,0.05)' : C.bgElev,
+                padding: '12px 16px',
+                position: 'relative',
+                flex: opt.recommended ? '1 1 auto' : '0 0 auto',
               }}
             >
-              40 DONE
-            </div>
-            <div
-              style={{
-                width: '71.4%',
-                background: C.bgElev,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontFamily: FONT_MONO,
-                fontSize: 11,
-                color: C.inkMid,
-                letterSpacing: '0.1em',
-              }}
-            >
-              ~100 REMAINING · ~2 YEARS · ON CLASSIC AEM
-            </div>
-          </div>
-        </div>
-
-        {/* The tension */}
-        <div
-          style={{
-            marginTop: 22,
-            padding: '14px 16px',
-            borderLeft: `2px solid ${C.coral}`,
-            background: 'rgba(217, 117, 89, 0.06)',
-          }}
-        >
-          <div
-            style={{
-              fontFamily: FONT_MONO,
-              fontSize: 10,
-              color: C.coral,
-              letterSpacing: '0.2em',
-              textTransform: 'uppercase',
-              marginBottom: 4,
-            }}
-          >
-            The tension
-          </div>
-          <div
-            style={{
-              fontFamily: FONT_SERIF,
-              fontStyle: 'italic',
-              fontSize: 17,
-              color: C.ink,
-              lineHeight: 1.3,
-            }}
-          >
-            Every site migrated to classic AEM over the next two years is a site that will need
-            to be migrated again.
-          </div>
-        </div>
-      </div>
-
-      {/* RIGHT — the three options */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 10, minHeight: 0 }}>
-        <div
-          style={{
-            fontFamily: FONT_MONO,
-            fontSize: 10,
-            color: C.inkMuted,
-            letterSpacing: '0.2em',
-            textTransform: 'uppercase',
-            marginBottom: 2,
-          }}
-        >
-          Three options for the remaining sites
-        </div>
-
-        {[
-          {
-            label: 'OPTION A',
-            t: 'Stay the course',
-            sub: 'Finish on classic AEM, migrate to EDS later',
-            b: 'Lowest near-term disruption. Highest cumulative cost — every site gets migrated twice. Locks in two more years of divergence from Adobe\u2019s AI roadmap.',
-            verdict: 'Cleanest schedule. Most expensive over time.',
-            accent: C.inkMuted,
-          },
-          {
-            label: 'OPTION B',
-            t: 'Pivot immediately',
-            sub: 'Re-target the remaining 100 to EDS',
-            b: 'Single migration per site, full alignment to Adobe\u2019s roadmap. Requires re-skilling, new tooling, and a 1–2 quarter program pause to retool. Highest short-term cost, lowest long-term cost.',
-            verdict: 'Most expensive this year. Cheapest over five.',
-            accent: C.amber,
-          },
-          {
-            label: 'OPTION C',
-            t: 'Pilot, then prioritize by value',
-            sub: 'A three-phase path that honors the risk posture and captures the value',
-            b: (
-  <>
-    <div style={{ marginBottom: 8 }}>
-      <strong style={{ color: C.ink, fontWeight: 500 }}>Phase 0</strong> — pilot on one mid-tier locale (one quarter) to prove the EDS pattern under real conditions, not on the crown jewel.
-    </div>
-    <div style={{ marginBottom: 8 }}>
-      <strong style={{ color: C.ink, fontWeight: 500 }}>Phase 1</strong> — migrate the top 20% of locales by traffic, where the performance and AI gains compound against real volume.
-    </div>
-    <div>
-      <strong style={{ color: C.ink, fontWeight: 500 }}>Phase 2</strong> — run the long tail on the now-proven pattern, increasingly automated by the Modernization Agent.
-    </div>
-  </>
-),
-            verdict: 'Risk reduction where it counts. Value where it concentrates.',
-            accent: C.amber,
-            recommended: true,
-          },
-        ].map((opt) => (
-          <div
-            key={opt.label}
-            style={{
-              border: `1px solid ${opt.recommended ? C.amber : C.line}`,
-              background: opt.recommended ? 'rgba(232,163,61,0.05)' : C.bgElev,
-              padding: '12px 16px',
-              position: 'relative',
-            }}
-          >
-            {opt.recommended && (
+              {opt.recommended && (
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: -8,
+                    right: 14,
+                    background: C.amber,
+                    color: C.bg,
+                    fontFamily: FONT_MONO,
+                    fontSize: 9,
+                    letterSpacing: '0.18em',
+                    fontWeight: 600,
+                    padding: '3px 8px',
+                    textTransform: 'uppercase',
+                  }}
+                >
+                  IBM Recommended
+                </div>
+              )}
               <div
                 style={{
-                  position: 'absolute',
-                  top: -8,
-                  right: 14,
-                  background: C.amber,
-                  color: C.bg,
-                  fontFamily: FONT_MONO,
-                  fontSize: 9,
-                  letterSpacing: '0.18em',
-                  fontWeight: 600,
-                  padding: '3px 8px',
-                  textTransform: 'uppercase',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'baseline',
+                  marginBottom: 4,
                 }}
               >
-                IBM Recommended
+                <Eyebrow color={opt.accent}>{opt.label}</Eyebrow>
+                <div
+                  style={{
+                    fontFamily: FONT_SERIF,
+                    fontSize: 18,
+                    color: C.ink,
+                  }}
+                >
+                  {opt.t}
+                </div>
               </div>
-            )}
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'baseline',
-                marginBottom: 4,
-              }}
-            >
-              <Eyebrow color={opt.accent}>{opt.label}</Eyebrow>
               <div
                 style={{
                   fontFamily: FONT_SERIF,
-                  fontSize: 18,
-                  color: C.ink,
+                  fontStyle: 'italic',
+                  fontSize: 13,
+                  color: C.inkMid,
+                  marginBottom: 6,
                 }}
               >
-                {opt.t}
+                {opt.sub}
+              </div>
+              <Body size={12} lh={1.5}>
+                {opt.b}
+              </Body>
+              <div
+                style={{
+                  marginTop: 8,
+                  paddingTop: 6,
+                  borderTop: `1px solid ${C.lineSoft}`,
+                  fontFamily: FONT_MONO,
+                  fontSize: 9.5,
+                  color: opt.accent,
+                  letterSpacing: '0.12em',
+                  textTransform: 'uppercase',
+                }}
+              >
+                {opt.verdict}
               </div>
             </div>
-            <div
-              style={{
-                fontFamily: FONT_SERIF,
-                fontStyle: 'italic',
-                fontSize: 13,
-                color: C.inkMid,
-                marginBottom: 6,
-              }}
-            >
-              {opt.sub}
-            </div>
-            <Body size={12} lh={1.5}>
-              {opt.b}
-            </Body>
-            <div
-              style={{
-                marginTop: 6,
-                paddingTop: 6,
-                borderTop: `1px solid ${C.lineSoft}`,
-                fontFamily: FONT_MONO,
-                fontSize: 9.5,
-                color: opt.accent,
-                letterSpacing: '0.12em',
-                textTransform: 'uppercase',
-              }}
-            >
-              {opt.verdict}
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-
-    {/* BOTTOM — the considerations */}
-    <div
-      style={{
-        marginTop: 16,
-        display: 'grid',
-        gridTemplateColumns: 'repeat(4, 1fr)',
-        gap: 10,
-      }}
-    >
-      <div
-        style={{
-          fontFamily: FONT_MONO,
-          fontSize: 10,
-          color: C.inkMuted,
-          letterSpacing: '0.2em',
-          textTransform: 'uppercase',
-          gridColumn: '1 / -1',
-          marginBottom: 2,
-        }}
-      >
-        Considerations that drive the call
-      </div>
-
-      {[
-        { t: 'Site lifecycle', b: 'How long does each site need to live? A site sunsetting in 18 months is not worth a double migration.' },
-        { t: 'Change velocity', b: 'High-change marketing sites benefit most from EDS\u2019s document authoring; static brochureware benefits least.' },
-        { t: 'Team readiness', b: 'EDS is plain HTML/CSS/JS in GitHub. Re-skilling the AEM team is a real but bounded program.' },
-        { t: 'Migration Rescoping', b: 'Existing migration vendor contracts may need re-scoping. Modernization Agent can absorb part of the work.' },
-      ].map((c) => (
-        <div
-          key={c.t}
-          style={{
-            border: `1px solid ${C.line}`,
-            background: C.bgCard,
-            padding: '10px 12px',
-          }}
-        >
-          <div
-            style={{
-              fontFamily: FONT_SERIF,
-              fontSize: 14,
-              color: C.amber,
-              marginBottom: 4,
-              lineHeight: 1.2,
-            }}
-          >
-            {c.t}
-          </div>
-          <Body size={11.5} lh={1.45}>
-            {c.b}
-          </Body>
+          ))}
         </div>
-      ))}
-    </div>
-  </SlideShell>
-);
+      </div>
+    </SlideShell>
+  );
+};
 
 /* ──────────────────────────────────────────────────────────────────
    SLIDE 08 — NEXT STEPS
