@@ -673,7 +673,7 @@ const SlideWhyAndProof = () => (
           tag: 'PERFORMANCE',
           h: '100',
           sub: 'Lighthouse target',
-          body: 'Adobe applies a "Keeping it 100" discipline. Faster pages translate into SEO, engagement, and measurable conversion lift.',
+          body: 'Adobe applies a "Keeping it 100" discipline. Faster pages translate into GEO, engagement, and measurable conversion lift.',
         },
         {
           icon: Zap,
