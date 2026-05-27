@@ -680,7 +680,7 @@ const SlideWhyAndProof = () => (
           tag: 'VELOCITY',
           h: 'Days',
           sub: 'not months',
-          body: 'Document-based authoring and a GitHub-native code path collapse the change cycle from quarters to a release cadence marketing can use.',
+          body: 'In-browser, tag-based authoring and a GitHub-native code path collapse the change cycle from quarters to a release cadence marketing can use.',
         },
         {
           icon: Sparkles,
@@ -765,8 +765,8 @@ const SlideWhyAndProof = () => (
         {[
           { v: '7.2 → 3.4s', l: 'Adobe.com LCP after EDS' },
           { v: '+35%', l: 'engaged-visit rate, mobile' },
-          { v: '3×', l: 'retargeted conversion (HanesBrands)' },
-          { v: 'Days', l: 'TTM gains — Volvo / Mack Trucks' },
+          { v: '3×', l: 'retargeted conversion ' },
+          { v: 'Days', l: 'TTM gains' },
         ].map((s) => (
           <div
             key={s.l}
@@ -999,44 +999,49 @@ const SlideMigrationReality = () => (
 ────────────────────────────────────────────────────────────────── */
 const SlideToolkit = () => {
   const tools = [
-    {
-      icon: Bot,
-      tag: 'AI-DRIVEN',
-      t: 'Experience Modernization Agent',
-      b: "Adobe's flagship migration agent. Analyzes pages, maps them to EDS blocks, extracts the design system, and writes CSS/JS as reviewable GitHub PRs.",
-    },
-    {
-      icon: ScanLine,
-      tag: 'CONTENT',
-      t: 'AEM Importer Tool',
-      b: 'Transforms existing page DOMs into the Markdown/docx structure EDS expects. Configurable per-block rules for repeatable, large-scale migrations.',
-    },
-    {
-      icon: Workflow,
-      tag: 'PLANNING',
-      t: 'Cloud Acceleration Manager',
-      b: "Adobe's end-to-end migration cockpit — readiness, implementation, go-live, post-launch. The umbrella for the other tools.",
-    },
-    {
-      icon: ClipboardCheck,
-      tag: 'ASSESSMENT',
-      t: 'Best Practices Analyzer',
-      b: 'Scans the existing AEM footprint and flags anti-patterns, custom code risks, and refactoring needs before migration begins.',
-    },
-    {
-      icon: RefreshCw,
-      tag: 'CONTENT',
-      t: 'Content Transfer Tool',
-      b: 'Moves repository content into AEM as a Cloud Service safely — handles large repositories, validation, and resumable transfers.',
-    },
-    {
-      icon: Package,
-      tag: 'SANDBOX',
-      t: 'AEM Playground',
-      b: 'Isolated environment to pilot migrations and test agent workflows without touching production code or content.',
-    },
-  ];
-
+  {
+    icon: Bot,
+    tag: 'AI-DRIVEN',
+    t: 'Experience Modernization Agent',
+    b: "Adobe's flagship migration agent. Analyzes pages, maps them to EDS blocks, extracts the design system, and writes CSS/JS as reviewable GitHub PRs.",
+    url: 'https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/ai-in-aem/agents/brand-experience/modernization/getting-started',
+  },
+  {
+    icon: ScanLine,
+    tag: 'CONTENT',
+    t: 'AEM Importer Tool',
+    b: 'Transforms existing page DOMs into the Markdown/docx structure EDS expects. Configurable per-block rules for repeatable, large-scale migrations.',
+    url: 'https://www.aem.live/developer/importer',
+  },
+  {
+    icon: Workflow,
+    tag: 'PLANNING',
+    t: 'Cloud Acceleration Manager',
+    b: "Adobe's end-to-end migration cockpit — readiness, implementation, go-live, post-launch. The umbrella for the other tools.",
+    url: 'https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/migration-journey/cloud-acceleration-manager/introduction',
+  },
+  {
+    icon: ClipboardCheck,
+    tag: 'ASSESSMENT',
+    t: 'Best Practices Analyzer',
+    b: 'Scans the existing AEM footprint and flags anti-patterns, custom code risks, and refactoring needs before migration begins.',
+    url: 'https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/migration-journey/cloud-acceleration-manager/readiness-phase/best-practices-analyzer/overview-best-practices-analyzer',
+  },
+  {
+    icon: RefreshCw,
+    tag: 'CONTENT',
+    t: 'Content Transfer Tool',
+    b: 'Moves repository content into AEM as a Cloud Service safely — handles large repositories, validation, and resumable transfers.',
+    url: 'https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/migration-journey/cloud-migration/content-transfer-tool/overview-content-transfer-tool',
+  },
+  {
+    icon: Package,
+    tag: 'SANDBOX',
+    t: 'AEM Playground',
+    b: 'Isolated environment to pilot migrations and test agent workflows without touching production code or content.',
+    url: 'https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/ai-in-aem/agents/brand-experience/modernization/console',
+  },
+];
   return (
     <SlideShell num="05" label="Adobe's migration toolkit" kicker="What Adobe has built to help">
       <SlideTitle size={44}>
@@ -1062,14 +1067,22 @@ const SlideToolkit = () => {
         }}
       >
         {tools.map((tool) => (
-          <div
+        <a 
             key={tool.t}
+            href={tool.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="tool-card"
             style={{
               background: C.bgElev,
               border: `1px solid ${C.line}`,
               padding: '14px 16px',
               display: 'flex',
               flexDirection: 'column',
+              textDecoration: 'none',
+              color: 'inherit',
+              cursor: 'pointer',
+              transition: 'border-color 0.2s, background 0.2s, transform 0.2s',
             }}
           >
             <div
@@ -1097,7 +1110,21 @@ const SlideToolkit = () => {
             <Body size={12} lh={1.5}>
               {tool.b}
             </Body>
-          </div>
+            <div
+              style={{
+                marginTop: 10,
+                paddingTop: 8,
+                borderTop: `1px solid ${C.lineSoft}`,
+                fontFamily: FONT_MONO,
+                fontSize: 9,
+                color: C.amber,
+                letterSpacing: '0.15em',
+                textTransform: 'uppercase',
+              }}
+            >
+              Read docs →
+            </div>
+          </a>
         ))}
       </div>
     </SlideShell>
@@ -1129,7 +1156,7 @@ const SlideQuestions = () => (
         {
           n: '02',
           t: 'Economics',
-          q: 'What is the real cost of staying on legacy AEM versus the cost of a controlled, phased migration to EDS?',
+          q: 'What is the real cost of staying on legacy AEM versus the cost of a controlled, phased migration to EDS (or an alternate composable platform)?',
         },
         {
           n: '03',
@@ -1183,11 +1210,305 @@ const SlideQuestions = () => (
   </SlideShell>
 );
 
+
 /* ──────────────────────────────────────────────────────────────────
-   SLIDE 07 — NEXT STEPS
+   SLIDE 07 — WebU Migration Considerations
+────────────────────────────────────────────────────────────────── */
+
+const SlideProgramInFlight = () => (
+  <SlideShell num="07" label="The program in flight" kicker="IBM Point of View">
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.15fr', gap: 40, flex: 1, minHeight: 0 }}>
+      {/* LEFT — situation + status bar */}
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <SlideTitle size={42}>
+          What about the <span style={{ fontStyle: 'italic', color: C.amber }}>100 sites still on the docket?</span>
+        </SlideTitle>
+
+        <div style={{ marginTop: 14, maxWidth: 460 }}>
+          <Body size={13.5} lh={1.55}>
+            A redesign program is already in motion — 40 of 140 sites migrated to the new design,
+            100 remaining on a quarter-by-quarter cadence over the next two years, all targeting
+            classic AEM Sites. With EDS now the strategic future, the existing plan needs a
+            second look.
+          </Body>
+        </div>
+
+        {/* Program status bar */}
+        <div style={{ marginTop: 22 }}>
+          <div
+            style={{
+              fontFamily: FONT_MONO,
+              fontSize: 10,
+              color: C.inkMuted,
+              letterSpacing: '0.2em',
+              textTransform: 'uppercase',
+              marginBottom: 8,
+            }}
+          >
+            Program status
+          </div>
+          <div
+            style={{
+              display: 'flex',
+              height: 36,
+              border: `1px solid ${C.line}`,
+              overflow: 'hidden',
+            }}
+          >
+            <div
+              style={{
+                width: '28.6%',
+                background: C.amber,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontFamily: FONT_MONO,
+                fontSize: 11,
+                color: C.bg,
+                fontWeight: 600,
+                letterSpacing: '0.1em',
+              }}
+            >
+              40 DONE
+            </div>
+            <div
+              style={{
+                width: '71.4%',
+                background: C.bgElev,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontFamily: FONT_MONO,
+                fontSize: 11,
+                color: C.inkMid,
+                letterSpacing: '0.1em',
+              }}
+            >
+              100 REMAINING · ~2 YEARS · ON CLASSIC AEM
+            </div>
+          </div>
+        </div>
+
+        {/* The tension */}
+        <div
+          style={{
+            marginTop: 22,
+            padding: '14px 16px',
+            borderLeft: `2px solid ${C.coral}`,
+            background: 'rgba(217, 117, 89, 0.06)',
+          }}
+        >
+          <div
+            style={{
+              fontFamily: FONT_MONO,
+              fontSize: 10,
+              color: C.coral,
+              letterSpacing: '0.2em',
+              textTransform: 'uppercase',
+              marginBottom: 4,
+            }}
+          >
+            The tension
+          </div>
+          <div
+            style={{
+              fontFamily: FONT_SERIF,
+              fontStyle: 'italic',
+              fontSize: 17,
+              color: C.ink,
+              lineHeight: 1.3,
+            }}
+          >
+            Every site migrated to classic AEM over the next two years is a site that will need
+            to be migrated again.
+          </div>
+        </div>
+      </div>
+
+      {/* RIGHT — the three options */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 10, minHeight: 0 }}>
+        <div
+          style={{
+            fontFamily: FONT_MONO,
+            fontSize: 10,
+            color: C.inkMuted,
+            letterSpacing: '0.2em',
+            textTransform: 'uppercase',
+            marginBottom: 2,
+          }}
+        >
+          Three options for the remaining 100
+        </div>
+
+        {[
+          {
+            label: 'OPTION A',
+            t: 'Stay the course',
+            sub: 'Finish on classic AEM, migrate to EDS later',
+            b: 'Lowest near-term disruption. Highest cumulative cost — every site gets migrated twice. Locks in two more years of divergence from Adobe\u2019s AI roadmap.',
+            verdict: 'Cleanest schedule. Most expensive over time.',
+            accent: C.inkMuted,
+          },
+          {
+            label: 'OPTION B',
+            t: 'Pivot immediately',
+            sub: 'Re-target the remaining 100 to EDS',
+            b: 'Single migration per site, full alignment to Adobe\u2019s roadmap. Requires re-skilling, new tooling, and a 1–2 quarter program pause to retool. Highest short-term cost, lowest long-term cost.',
+            verdict: 'Most expensive this year. Cheapest over five.',
+            accent: C.amber,
+          },
+          {
+            label: 'OPTION C',
+            t: 'Bifurcate the backlog',
+            sub: 'Triage now — EDS for the right sites, classic for the rest',
+            b: 'New / marketing / high-velocity sites go to EDS. Stable, low-change sites finish on classic AEM. Uses the modernization agent for the EDS subset. Balances disruption against future-proofing.',
+            verdict: 'IBM\u2019s recommended starting position.',
+            accent: C.amber,
+            recommended: true,
+          },
+        ].map((opt) => (
+          <div
+            key={opt.label}
+            style={{
+              border: `1px solid ${opt.recommended ? C.amber : C.line}`,
+              background: opt.recommended ? 'rgba(232,163,61,0.05)' : C.bgElev,
+              padding: '12px 16px',
+              position: 'relative',
+            }}
+          >
+            {opt.recommended && (
+              <div
+                style={{
+                  position: 'absolute',
+                  top: -8,
+                  right: 14,
+                  background: C.amber,
+                  color: C.bg,
+                  fontFamily: FONT_MONO,
+                  fontSize: 9,
+                  letterSpacing: '0.18em',
+                  fontWeight: 600,
+                  padding: '3px 8px',
+                  textTransform: 'uppercase',
+                }}
+              >
+                IBM Recommended
+              </div>
+            )}
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'baseline',
+                marginBottom: 4,
+              }}
+            >
+              <Eyebrow color={opt.accent}>{opt.label}</Eyebrow>
+              <div
+                style={{
+                  fontFamily: FONT_SERIF,
+                  fontSize: 18,
+                  color: C.ink,
+                }}
+              >
+                {opt.t}
+              </div>
+            </div>
+            <div
+              style={{
+                fontFamily: FONT_SERIF,
+                fontStyle: 'italic',
+                fontSize: 13,
+                color: C.inkMid,
+                marginBottom: 6,
+              }}
+            >
+              {opt.sub}
+            </div>
+            <Body size={12} lh={1.5}>
+              {opt.b}
+            </Body>
+            <div
+              style={{
+                marginTop: 6,
+                paddingTop: 6,
+                borderTop: `1px solid ${C.lineSoft}`,
+                fontFamily: FONT_MONO,
+                fontSize: 9.5,
+                color: opt.accent,
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase',
+              }}
+            >
+              {opt.verdict}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {/* BOTTOM — the considerations */}
+    <div
+      style={{
+        marginTop: 16,
+        display: 'grid',
+        gridTemplateColumns: 'repeat(4, 1fr)',
+        gap: 10,
+      }}
+    >
+      <div
+        style={{
+          fontFamily: FONT_MONO,
+          fontSize: 10,
+          color: C.inkMuted,
+          letterSpacing: '0.2em',
+          textTransform: 'uppercase',
+          gridColumn: '1 / -1',
+          marginBottom: 2,
+        }}
+      >
+        Considerations that drive the call
+      </div>
+
+      {[
+        { t: 'Site lifecycle', b: 'How long does each site need to live? A site sunsetting in 18 months is not worth a double migration.' },
+        { t: 'Change velocity', b: 'High-change marketing sites benefit most from EDS\u2019s document authoring; static brochureware benefits least.' },
+        { t: 'Team readiness', b: 'EDS is plain HTML/CSS/JS in GitHub. Re-skilling the AEM team is a real but bounded program.' },
+        { t: 'Vendor & contract', b: 'Existing redesign vendor contracts may need re-scoping. Modernization Agent can absorb part of the work.' },
+      ].map((c) => (
+        <div
+          key={c.t}
+          style={{
+            border: `1px solid ${C.line}`,
+            background: C.bgCard,
+            padding: '10px 12px',
+          }}
+        >
+          <div
+            style={{
+              fontFamily: FONT_SERIF,
+              fontSize: 14,
+              color: C.amber,
+              marginBottom: 4,
+              lineHeight: 1.2,
+            }}
+          >
+            {c.t}
+          </div>
+          <Body size={11.5} lh={1.45}>
+            {c.b}
+          </Body>
+        </div>
+      ))}
+    </div>
+  </SlideShell>
+);
+
+/* ──────────────────────────────────────────────────────────────────
+   SLIDE 08 — NEXT STEPS
 ────────────────────────────────────────────────────────────────── */
 const SlideNextSteps = () => (
-  <SlideShell num="07" label="Recommended next steps" kicker="From awareness to decision">
+  <SlideShell num="08" label="Recommended next steps" kicker="From awareness to decision">
     <SlideTitle size={46}>
       A <span style={{ fontStyle: 'italic', color: C.amber }}>phased path</span> from this
       conversation to a defensible business case.
@@ -1293,7 +1614,7 @@ const SlideNextSteps = () => (
 );
 
 /* ──────────────────────────────────────────────────────────────────
-   SLIDE 08 — DISCUSSION
+   SLIDE 09 — DISCUSSION
 ────────────────────────────────────────────────────────────────── */
 const SlideDiscussion = () => (
   <div
@@ -1392,6 +1713,7 @@ const slides = [
   { key: 'reality', label: 'Migration reality', component: SlideMigrationReality },
   { key: 'toolkit', label: "Adobe's toolkit", component: SlideToolkit },
   { key: 'questions', label: 'Three questions', component: SlideQuestions },
+  { key: 'program', label: 'Program in flight', component: SlideProgramInFlight },
   { key: 'next', label: 'Next steps', component: SlideNextSteps },
   { key: 'discuss', label: 'Discussion', component: SlideDiscussion },
 ];
