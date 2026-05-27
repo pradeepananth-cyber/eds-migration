@@ -1282,7 +1282,7 @@ const SlideProgramInFlight = () => {
           <div style={{ marginTop: 10 }}>
             <Body size={12.5} lh={1.5}>
               ~40 sites are migrated to the new design;
-              Another ~100 to be migrated on a quarterlycadence over two years, all targeting classic AEM.
+              Another ~100 to be migrated on a quarterly cadence over the next two years, all targeting classic AEM.
               With EDS now the strategic future, <span style={{ fontStyle: 'italic', color: C.amber }}> every locale migrated to classic over the next two
               years is a locale that will need to be migrated again.</span>
             </Body>
@@ -1324,7 +1324,7 @@ const SlideProgramInFlight = () => {
                   letterSpacing: '0.1em',
                 }}
               >
-                40 DONE
+                ~40 Migrated
               </div>
               <div
                 style={{
@@ -1339,7 +1339,7 @@ const SlideProgramInFlight = () => {
                   letterSpacing: '0.1em',
                 }}
               >
-                100 REMAINING · ~2 YEARS · ON CLASSIC AEM
+                ~100 TO BE Migrated over ~2 YEARS · ON CLASSIC AEM
               </div>
             </div>
           </div>
