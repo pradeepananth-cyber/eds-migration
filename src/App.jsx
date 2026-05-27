@@ -241,7 +241,18 @@ const SlideShell = ({ children, num, label, kicker }) => (
         </span>
         <Eyebrow color={C.inkMuted}>{label}</Eyebrow>
       </div>
-      {kicker && <Eyebrow color={C.inkMuted}>{kicker}</Eyebrow>}
+      <span
+          style={{
+            fontFamily: FONT_MONO,
+            fontSize: 11,
+            color: C.amber,
+            letterSpacing: '0.22em',
+            textTransform: 'uppercase',
+            fontWeight: 500,
+          }}
+        >
+          IBM Point of View
+        </span>
     </div>
 
     <div style={{ flex: 1, display: 'flex', flexDirection: 'column', position: 'relative', zIndex: 1, minHeight: 0 }}>
@@ -304,39 +315,53 @@ const SlideCover = () => (
 
     {/* top — IBM POV identity */}
     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', zIndex: 1 }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-        <IBMMark size={42} withFrame={false} />
+        <Eyebrow color={C.inkMuted}>Strategic Briefing · 2026</Eyebrow>
+        <Eyebrow color={C.inkMuted}>Executive Conversation Starter</Eyebrow>
+    </div>
+
+    {/* middle */}
+    <div style={{ zIndex: 1, maxWidth: '85%', display: 'flex', flexDirection: 'column', gap: 28 }}>
+      {/* IBM identity block — large and centered */}
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 22,
+          paddingBottom: 22,
+          borderBottom: `1px solid ${C.line}`,
+        }}
+      >
+        <IBMMark size={84} withFrame={false} />
         <div>
           <div
             style={{
               fontFamily: FONT_MONO,
-              fontSize: 11,
+              fontSize: 13,
               color: C.amber,
-              letterSpacing: '0.22em',
+              letterSpacing: '0.24em',
               textTransform: 'uppercase',
+              fontWeight: 500,
             }}
           >
             IBM Point of View
           </div>
           <div
             style={{
-              fontFamily: FONT_MONO,
-              fontSize: 10,
-              color: C.inkMuted,
-              letterSpacing: '0.18em',
-              marginTop: 3,
+              fontFamily: FONT_SERIF,
+              fontStyle: 'italic',
+              fontSize: 22,
+              color: C.inkMid,
+              marginTop: 6,
+              lineHeight: 1.3,
             }}
           >
-            Strategic Briefing · 2026
+            An IBM perspective on Adobe's architectural shift
           </div>
         </div>
       </div>
-      <Eyebrow color={C.inkMuted}>Executive Conversation Starter</Eyebrow>
-    </div>
 
-    {/* middle */}
-    <div style={{ zIndex: 1, maxWidth: '80%' }}>
-      <div style={{ marginBottom: 18 }}>
+      {/* Topic eyebrow */}
+      <div>
         <span
           style={{
             fontFamily: FONT_MONO,
@@ -350,11 +375,12 @@ const SlideCover = () => (
         </span>
       </div>
 
+      {/* Title */}
       <h1
         style={{
           fontFamily: FONT_SERIF,
           fontWeight: 400,
-          fontSize: 84,
+          fontSize: 80,
           lineHeight: 0.98,
           letterSpacing: '-0.025em',
           color: C.ink,
@@ -366,7 +392,8 @@ const SlideCover = () => (
         <span style={{ fontStyle: 'italic', color: C.amber }}>not a platform upgrade.</span>
       </h1>
 
-      <div style={{ marginTop: 26, maxWidth: 580 }}>
+      {/* Description */}
+      <div style={{ maxWidth: 620 }}>
         <Body size={16} color={C.inkMid} lh={1.55}>
           An IBM-prepared briefing on Adobe's architectural shift, what it means for current AEM
           investments, and the strategic choices that need to happen this fiscal year — with
